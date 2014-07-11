@@ -26,7 +26,6 @@ end
 group "chef" do
 	action :create
 	gid "1000"
-	members ['chef']
 end
 
 user "chef" do
