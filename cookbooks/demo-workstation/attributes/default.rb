@@ -9,7 +9,7 @@ default["demo-workstation"]["chefdk_url"] = "#{default["demo-workstation"]["chef
 default["demo-workstation"]["chef_passwd"] = "$1$zGNiXIwl$SZ.5Jq9I4UfIY5SPCd7mN0"
 
 #git repository of the chef-repo
-default["demo-workstation"]["git_repo"] = "git@github.com:github.com/mfdii/demo-env"
+default["demo-workstation"]["git_repo"] = "git://github.com/mfdii/demo-env"
 
 #typically this is the ChefDK gem install
 default["demo-workstation"]["gem_binary"] = "/opt/chefdk/embedded/bin/gem"
