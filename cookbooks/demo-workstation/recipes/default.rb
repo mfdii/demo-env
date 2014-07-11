@@ -61,6 +61,11 @@ git "/demo/demo-env" do
 	action :sync
 end
 
+execute "Install devtools" do
+	command "yum groupinstall -y 'Development Tools'"
+	action :run
+end
+
 gem_package "knife-ec2" do
 	gem_binary (node["demo-workstation"]["gem_binary"])
 end
