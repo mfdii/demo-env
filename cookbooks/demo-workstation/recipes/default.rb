@@ -19,6 +19,19 @@ package "chefdk" do
  	source "/tmp/#{node["demo-workstation"]["chefdk_rpm"]}"
 end
 
+remote_file "/tmp/#{node["demo-workstation"]["vagrant_rpm"]}" do
+  owner "root"
+  group "root"
+  mode "0644"
+  source "#{node["demo-workstation"]["vagrant_url"]}"
+  checksum "sha256checksum"
+end
+
+package "vagrant" do
+	action :install
+	source "/tmp/#{node["demo-workstation"]["vagrant_rpm"]}"
+end
+
 package "git" do
 	action :install
 end
@@ -72,6 +85,14 @@ end
 
 gem_package "knife-azure" do
 	gem_binary (node["demo-workstation"]["gem_binary"])
+end
+
+%w{vagrant-azure vagrant-amazon vagrant-windows} do |plugin|
+	execute "Install #{plugin}" do
+		command "su - chef -c 'vagrant plugin install #{plugin}'"
+		only_if {Dir.glob("/home/chef/.vagrant.d/gems/gems/#{plugin}*").empty?}
+		action :run
+	end
 end
 
 ark "dsc" do

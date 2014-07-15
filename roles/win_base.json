@@ -1,0 +1,16 @@
+{
+  "name": "win_base",
+  "default_attributes": {
+    "chef-client": {
+      "interval": "30",
+      "config": {
+        "chef_server_url": "https://api.opscode.com/organizations/ducy-azure",
+        "validation_client_name": "ducy-azure-validator"
+      }
+    }
+  },
+  "run_list": [
+    "recipe[windowshacks::w32time]",
+    "recipe[windowshacks::wsmanquickconfig]"
+  ]
+}
