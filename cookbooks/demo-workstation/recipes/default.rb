@@ -87,7 +87,7 @@ gem_package "knife-azure" do
 	gem_binary (node["demo-workstation"]["gem_binary"])
 end
 
-%w{vagrant-azure vagrant-amazon vagrant-windows} do |plugin|
+%w{vagrant-azure vagrant-amazon vagrant-windows}.each do |plugin|
 	execute "Install #{plugin}" do
 		command "su - chef -c 'vagrant plugin install #{plugin}'"
 		only_if {Dir.glob("/home/chef/.vagrant.d/gems/gems/#{plugin}*").empty?}
