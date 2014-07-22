@@ -95,11 +95,7 @@ end
 	end
 end
 
-ark "dsc" do
-  action :put
-  url "https://www.dropbox.com/s/lbge18moxwvqaoa/dsc.tar.gz?dl=1"
-  path "/demo/extras"
-end
+
 
 
 
