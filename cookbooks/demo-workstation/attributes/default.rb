@@ -2,7 +2,7 @@
 
 #where to get the ChefDK RPM and it's name
 default["demo-workstation"]["chefdk_rpm"] = "chefdk-0.2.0-2.el6.x86_64.rpm"
-default["demo-workstation"]["chefdk_baseurl"] = "https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.2.0-2.el6.x86_64.rpm"
+default["demo-workstation"]["chefdk_baseurl"] = "https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/"
 default["demo-workstation"]["chefdk_url"] = "#{default["demo-workstation"]["chefdk_baseurl"]}#{default["demo-workstation"]["chefdk_rpm"]}"
 
 #where to get Vagrant
