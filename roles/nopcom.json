@@ -10,11 +10,11 @@
       },
       "nopcommerce": {
         "elbname": "NOPelb"
-
       }
     }
   },
   "run_list": [
-    "recipe[nopcommerce::demo]"
+    "role[win_base]",
+    "recipe[nopcommerce]"
   ]
 }

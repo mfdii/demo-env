@@ -1,31 +1,52 @@
-The chef-repo
-===============
-All installations require a central workspace known as the chef-repo. This is a place where primitive objects--cookbooks, roles, environments, data bags, and chef-repo configuration files--are stored and managed.
+Windows Management with Chef Demo
+=================================
+This repo provides the framework for setting up the required cookbooks to demo Windows Management with Chef.
 
-The chef-repo should be kept under version control, such as [git](http://git-scm.org), and then managed as if it were source code.
+Requirements
+------------
 
-Knife Configuration
--------------------
-Knife is the [command line interface](http://docs.opscode.com/knife.html) for Chef. The chef-repo contains a .chef directory (which is a hidden directory by default) in which the Knife configuration file (knife.rb) is located. This file contains configuration settings for the chef-repo.
+ChefDK, A Chef Server, Windows based instance (Cloud instances are fine), 
 
-The knife.rb file is automatically created by the starter kit. This file can be customized to support configuration settings used by [cloud provider options](http://docs.opscode.com/plugin_knife.html) and custom [knife plugins](http://docs.opscode.com/plugin_knife_custom.html).
-
-Also located inside the .chef directory are .pem files, which contain private keys used to authenticate requests made to the Chef server. The USERNAME.pem file contains a private key unique to the user (and should never be shared with anyone). The ORGANIZATION-validator.pem file contains a private key that is global to the entire organization (and is used by all nodes and workstations that send requests to the Chef server).
-
-More information about knife.rb configuration options can be found in [the documentation for knife](http://docs.opscode.com/config_rb_knife.html).
-
-Cookbooks
+Scenarios
 ---------
-A cookbook is the fundamental unit of configuration and policy distribution. A sample cookbook can be found in `cookbooks/starter`. After making changes to any cookbook, you must upload it to the Chef server using knife:
 
-    $ knife upload cookbooks/starter
+NOPCOMMERCE
 
-For more information about cookbooks, see the example files in the `starter` cookbook.
+Deploys a Nopcommerce website using the non DSC based Windows resources. Should work on Windows 2008-2012R2
+
+Fourth Coffee
+
+Deploys a website using the DSC based windows resources. Requires the node OS to support DSC (Windows 2012R2)
+
+Using
+-----
+
+Clone this repo
+
+```
+$ git clone https://github.com/mfdii/demo-env
+```
+Upload the content to your Chef server using Berkshelf.
+
+```
+$ cd demo-env
+$ berks install
+$ berks upload
+$ knife upload /roles
+```
+
+Now, simply apply the appropriate role to the server you wish to have the demo running on.
+
 
 Roles
 -----
-Roles provide logical grouping of cookbooks and other roles. A sample role can be found at `roles/starter.rb`.
 
-Getting Started
--------------------------
-Now that you have the chef-repo ready to go, check out [Learn Chef](https://learnchef.opscode.com/quickstart/workstation-setup/) to proceed with your workstation setup. If you have any questions about Chef you can always ask [our support team](https://www.opscode.com/support/tickets/new) for a helping hand.
+nopcom - deploys nopcommerce and dependencies
+
+fourthcofee - deploys fourth coffee site and dependencies
+
+win_base - base windows setup, included by the application roles
+
+Demo Script
+-----------
+
